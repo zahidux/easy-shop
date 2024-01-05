@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import MobileNav from "./MobileNav";
+import ActiveLink from "./ActiveLink";
+import { AuthContext } from "../../Provider/AuthProvider";
+import UserProfile from "./UserProfile";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
+  const { user } = useContext(AuthContext);
   return (
     <nav className="py-1 md:py-3 shadow-lg w-full z-50 transition-all duration-300 ease-in-out bg-white">
       <div className="container">
@@ -27,24 +31,31 @@ const Navbar = () => {
           </button>
           <ul className="hidden  md:flex gap-8 items-center text-lg font-semibold">
             <li>
-              <Link to={"/"}>Home</Link>
+              <ActiveLink to={"/"}>Home</ActiveLink>
             </li>
             <li>
-              <Link to={"/allProduct"}>All Product</Link>
+              <ActiveLink to={"/allProduct"}>All Product</ActiveLink>
             </li>
             <li>
-              <Link to={"/blog"}>Blog</Link>
+              <ActiveLink to={"/blog"}>Blog</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink to={"/dashboard"}>Dashboard</ActiveLink>
             </li>
           </ul>
           <ul className="hidden md:flex items-center gap-7">
             <li className="text-sky-500 text-2xl">
               <FaCartShopping />
             </li>
-            <li>
-              <Link to={"/login"}>
-                <button className="btn-primary">Login</button>
-              </Link>
-            </li>
+            {user ? (
+              <UserProfile user={user}></UserProfile>
+            ) : (
+              <li>
+                <Link to={"/login"}>
+                  <button className="btn-primary">Login</button>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
         {/* responsive nav */}

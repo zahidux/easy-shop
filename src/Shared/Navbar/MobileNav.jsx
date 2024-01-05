@@ -11,11 +11,11 @@ const MobileNav = ({ show, toggle }) => {
             ? { clipPath: "circle(200% at 100% 0" }
             : { clipPath: "circle(0% at 100% 0)" }
         }
-        className={`lg:hidden fixed bg-slate-800 origin-top-right text-white w-[250px] h-screen top-0 right-0 z-50 px-6 transition-all duration-300 ease-in`}
+        className={`fixed lg:hidden  bg-slate-800 origin-top-right text-white w-[250px] h-screen top-0 right-0 z-50 px-6 transition-all duration-300 ease-in`}
       >
         <div
           onClick={toggle}
-          className="text-4xl text-sky-700 hover:text-pink-600 absolute top-1 right-0 p-5"
+          className=" text-4xl text-sky-700 hover:text-pink-600 absolute top-1 right-0 p-5"
         >
           <IoCloseSharp />
         </div>
