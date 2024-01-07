@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const BestProductsCart = ({ products }) => {
-  const { _id, name, image, price } = products;
+const BestProductsCart = ({ product }) => {
+  const { _id, name, image, price } = product;
   return (
     <div className="border-2 border-orange-200 hover:shadow-xl hover:shadow-cyan-300 p-5 items-center">
-      <img className=" h-[275px] w-full" src={image} alt="" />
+      <img
+        data-aos="flip-left"
+        className=" h-[275px] w-full"
+        src={image}
+        alt=""
+      />
       <h3>{name}</h3>
       <p>Seller: </p>
       <p>Category: </p>

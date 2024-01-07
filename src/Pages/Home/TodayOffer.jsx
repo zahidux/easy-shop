@@ -3,7 +3,7 @@ import bg from "../../assets/images/todayOffer.jpg";
 
 const TodayOffer = () => {
   return (
-    <section className="flex place-items-center">
+    <section className="flex place-items-center ">
       <img className="w-full h-[500px]" src={bg} alt="offer" />
       <div
         data-aos="zoom-in"

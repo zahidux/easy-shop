@@ -23,12 +23,16 @@ const Dashboard = () => {
             open && "rotate-180"
           }`}
         />
-        <div className="text-white container py-24">
+        <h2 className="text-yellow text-center font-bold text-xl mt-8">
+          Admin
+        </h2>
+        <div className="text-white container py-16">
           <div className="flex gap-4 items-center font-bold ">
             <span className={`text-2xl cursor-pointer duration-500  `}>
               <SlBasketLoaded />
             </span>
             <Link
+              to={"/addItems"}
               className={`text-lg origin-left duration-500 ${
                 !open && "scale-0"
               }`}
@@ -45,6 +49,7 @@ const Dashboard = () => {
               <HiTemplate />
             </span>
             <Link
+              to={"/myItems"}
               className={`text-lg origin-left duration-500 ${
                 !open && "scale-0"
               }`}
@@ -61,6 +66,7 @@ const Dashboard = () => {
               <FaHome />
             </span>
             <Link
+              to={"/"}
               className={`text-lg origin-left duration-500 ${
                 !open && "scale-0"
               }`}

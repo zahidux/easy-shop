@@ -59,19 +59,39 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
-    return () => {
-      return unsubscribe();
-    };
-  }, []);
-
   const logOut = () => {
     return signOut(auth);
   };
+
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+      if (currentUser && currentUser.email) {
+        const loggedUser = {
+          email: currentUser.email,
+        };
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loggedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("jwt response", data);
+            //warning: local storage is not the best (second best please) to store access token
+            localStorage.setItem("car-access-token", data.token);
+          });
+      } else {
+        localStorage.removeItem("car-access-token");
+      }
+    });
+    return () => {
+      unSubscribe();
+    };
+  }, []);
 
   const authInfo = {
     user,

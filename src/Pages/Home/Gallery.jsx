@@ -9,7 +9,7 @@ const GalleryProducts = () => {
     .then((res) => res.json())
     .then((data) => setGallery(data));
   return (
-    <section className="my-12">
+    <section data-aos="fade-up" className="my-12">
       <SectionTitle subHeading={"Gallery"} Heading={"Our Products Gallery"} />
       <div className="container grid grid-cols-1 md:grid-cols-3 gap-12 ">
         {gallery.map((item) => (

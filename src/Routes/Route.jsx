@@ -10,6 +10,9 @@ import Login from "../Shared/Login";
 import PageNotFound from "../Components/PageNotFound";
 import PrivetRoute from "./PrivetRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import AddItems from "../Pages/Dashboard/AddItems";
+import MyItems from "../Pages/Dashboard/MyItems";
+import EditProducts from "../Pages/Dashboard/EditProducts";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +31,7 @@ const router = createBrowserRouter([
         path: "/productsDetails/:id",
         element: <ProductsDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/productsDetails/${params.id}`),
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "blog",
@@ -51,8 +54,22 @@ const router = createBrowserRouter([
         element: <SingUp />,
       },
       {
-        path: "/editProfile",
+        path: "editProfile",
         element: <EditProfile />,
+      },
+      {
+        path: "addItems",
+        element: <AddItems />,
+      },
+      {
+        path: "myItems",
+        element: <MyItems />,
+      },
+      {
+        path: "/editProducts/:id",
+        element: <EditProducts />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/myProducts/${params.id}`),
       },
     ],
   },

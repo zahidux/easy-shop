@@ -55,7 +55,7 @@ const Banner = () => {
             src={banner3}
             alt="eCommerce"
           />
-          <div className="absolute mx-14 md:mx-36">
+          <div data-aos="zoom-in" className="absolute mx-14 md:mx-36">
             <h1 className="text-4xl lg:text-6xl font-bold lg:leading-[70px] text-white ">
               Fashion Journey at <br /> Unbeatable Prices
             </h1>

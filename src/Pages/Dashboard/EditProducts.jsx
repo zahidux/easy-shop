@@ -1,9 +1,18 @@
 import React, { useContext } from "react";
-import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 
-const AddItems = () => {
+const EditProducts = () => {
+  const product = useLoaderData();
+
+  console.log(product);
+
   const { user } = useContext(AuthContext);
+  const { _id, title, description, price, category, image, quantity, email } =
+    product;
+
+  //from submit
   const handleSubmit = (e) => {
     e.preventDefault();
     const from = e.target;
@@ -13,34 +22,45 @@ const AddItems = () => {
     const price = from.price.value;
     const image = from.image.value;
     const email = from.email.value;
-    const item = { title, description, category, price, image, email };
-    console.log(item);
 
-    fetch("http://localhost:5000/myProducts", {
-      method: "POST",
+    if (isNaN(price)) {
+      return Swal.fire("Price should be number");
+    }
+
+    if (parseFloat(quantity)) {
+      return Swal.fire("Quantity should be number");
+    }
+
+    const update = { title, description, category, price, image, email };
+
+    fetch(`http://localhost:5000/newProducts/${_id}`, {
+      method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(item),
+      body: JSON.stringify(update),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        Swal.fire("Product Add Successfully");
-        from.reset();
+        if (data.modifiedCount > 0) {
+          Swal.Fire("Product Update Success!");
+        }
       });
   };
-
   return (
     <div className="py-16 bg-slate-100 ">
       <h2 className="text-3xl text-center font-semibold text-sky-600">
-        New Item
+        Update - {title}
       </h2>
       <div className=" w-10/12 md:w-8/12 mx-auto my-12 shadow-lg  rounded-xl py-16 px-12">
         <form onSubmit={handleSubmit}>
           <div>
             <div>
-              <p className="ml-2 text-lg text-slate-700 font-semibold">
+              <p
+                htmlFor="Title"
+                className="ml-2 text-lg text-slate-700 font-semibold"
+              >
                 Title :
               </p>
               <input
@@ -48,6 +68,7 @@ const AddItems = () => {
                 type="text"
                 name="title"
                 id="title"
+                defaultValue={title}
                 placeholder="Enter product name"
               />
             </div>
@@ -60,6 +81,7 @@ const AddItems = () => {
                 className="w-full h-44 outline-0 shadow-md bg-slate-50 rounded-md p-4 my-3 hover:shadow-sky-300  "
                 name="description"
                 placeholder="Item details"
+                defaultValue={description}
               />
             </div>
 
@@ -74,6 +96,7 @@ const AddItems = () => {
                   type="text"
                   name="category"
                   id="category"
+                  defaultValue={category}
                   placeholder="category "
                 />
               </div>
@@ -86,7 +109,7 @@ const AddItems = () => {
                   type="number"
                   name="quantity"
                   id="quantity"
-                  defaultValue={"1"}
+                  defaultValue={quantity}
                   placeholder="quantity"
                 />
               </div>
@@ -98,7 +121,7 @@ const AddItems = () => {
                 <input
                   className="w-full h-12 outline-0 shadow-md bg-slate-50 rounded-md hover:shadow-sky-300 pl-2 my-3"
                   type="text"
-                  defaultValue={"$" + "20"}
+                  defaultValue={price}
                   name="price"
                   id="price"
                   placeholder="price"
@@ -116,6 +139,7 @@ const AddItems = () => {
                 type="url"
                 name="image"
                 id="image"
+                defaultValue={image}
                 placeholder="Product image link"
               />
             </div>
@@ -130,7 +154,7 @@ const AddItems = () => {
                   name="email"
                   id="email"
                   placeholder="Admin email"
-                  defaultValue={user?.email}
+                  defaultValue={email}
                 />
               </div>
               <div className="my-8 w-full">
@@ -150,7 +174,7 @@ const AddItems = () => {
           </div>
           <div className="text-center">
             <button className="btn-primary" type="submit">
-              Add Item
+              Update
             </button>
           </div>
         </form>
@@ -159,4 +183,4 @@ const AddItems = () => {
   );
 };
 
-export default AddItems;
+export default EditProducts;

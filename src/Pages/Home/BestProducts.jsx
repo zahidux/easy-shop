@@ -19,8 +19,8 @@ const BestProducts = () => {
   } else if (bestProducts.length > 0) {
     content = (
       <div className="container grid grid-cols-1 md:grid-cols-3 gap-8">
-        {bestProducts.map((products) => (
-          <BestProductsCart key={products._id} products={products} />
+        {bestProducts.map((product) => (
+          <BestProductsCart key={product._id} product={product} />
         ))}
       </div>
     );
