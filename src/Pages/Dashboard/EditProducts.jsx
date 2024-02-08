@@ -32,9 +32,10 @@ const EditProducts = () => {
     }
 
     const update = { title, description, category, price, image, email };
+    console.log(update);
 
-    fetch(`http://localhost:5000/newProducts/${_id}`, {
-      method: "PATCH",
+    fetch(`http://localhost:5000/myProducts/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -42,7 +43,7 @@ const EditProducts = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.modifiedCount > 0) {
           Swal.Fire("Product Update Success!");
         }

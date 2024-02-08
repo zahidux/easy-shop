@@ -29,7 +29,7 @@ const Banner = () => {
       <SwiperSlide>
         <div className="flex place-items-center">
           <img
-            className="h-[350px] md:h-[675px] w-full "
+            className="h-[350px] md:h-[775px] w-full "
             place-items-center
             src={banner1}
             alt="eCommerce"
@@ -51,7 +51,7 @@ const Banner = () => {
       <SwiperSlide>
         <div className="flex place-items-center">
           <img
-            className="h-[350px] md:h-[675px] w-full"
+            className="h-[350px] md:h-[775px] w-full"
             src={banner3}
             alt="eCommerce"
           />

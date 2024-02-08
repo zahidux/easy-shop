@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const AddItems = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const from = e.target;
@@ -16,7 +18,7 @@ const AddItems = () => {
     const item = { title, description, category, price, image, email };
     console.log(item);
 
-    fetch("http://localhost:5000", {
+    fetch("http://localhost:5000/myProducts", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -28,6 +30,7 @@ const AddItems = () => {
         console.log(data);
         Swal.fire("Product Add Successfully");
         from.reset();
+        navigate("/myItems");
       });
   };
 

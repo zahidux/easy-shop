@@ -3,12 +3,9 @@ import bg from "../../assets/images/todayOffer.jpg";
 
 const TodayOffer = () => {
   return (
-    <section className="flex place-items-center ">
+    <section className="flex justify-center items-center">
       <img className="w-full h-[500px]" src={bg} alt="offer" />
-      <div
-        data-aos="zoom-in"
-        className="container absolute text-center md:mx-48"
-      >
+      <div data-aos="zoom-in" className="container absolute text-center grid ">
         <h2 className=" text-3xl md:text-5xl font-bold" text-slate-800>
           Deal Of The Day
         </h2>
@@ -21,7 +18,9 @@ const TodayOffer = () => {
           you. For a limited <br /> time only, enjoy up to 35% off on all other
           Car Toys.
         </p>
-        <button className="btn-primary  md:mt-4">Shop Now</button>
+        <div>
+          <button className="btn-primary  md:mt-4">Shop Now</button>
+        </div>
       </div>
     </section>
   );

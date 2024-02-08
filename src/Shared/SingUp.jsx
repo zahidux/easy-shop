@@ -43,9 +43,9 @@ const SignUp = () => {
   };
 
   return (
-    <div className="container flex items-center gap-24 py-16">
+    <div className="container md:flex items-center gap-24 py-16">
       <img src={signUp} alt="" />
-      <div className="bg-slate-200 p-10 rounded-xl shadow-xl w-5/12">
+      <div className="bg-slate-200 p-10 rounded-xl shadow-xl md:w-5/12">
         <h3 className="text-3xl text-center font-semibold mb-8">Sing Up</h3>
         <div>
           <form onSubmit={handelSingUp}>

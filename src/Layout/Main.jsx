@@ -13,8 +13,8 @@ const Main = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration
-      once: true, // Only animate once
+      duration: 1000,
+      once: true,
     });
   }, []);
 

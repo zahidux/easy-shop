@@ -7,6 +7,7 @@ import { FaTwitter } from "react-icons/fa";
 
 const ProductsDetails = () => {
   const items = useLoaderData();
+  console.log(items);
   const { name, image, price, seller, category, quantity } = items;
   const [count, setCount] = useState(1);
 

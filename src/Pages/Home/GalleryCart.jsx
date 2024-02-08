@@ -5,7 +5,7 @@ const GalleryCart = ({ item }) => {
   return (
     <div className="my-5 p-14 rounded-xl shadow-xl hover:shadow-2xl md:w-full h-100 relative md:flex flex-col over:scale-110 hover:z-40 z-10 transition-all duration-300 ease-in-out group ">
       <img
-        className="h-full mb-4 m-auto relative group-hover:scale-125 transition-all duration-300 ease-in-out"
+        className="h-[200px] md:h-full mb-4 m-auto relative group-hover:scale-125 transition-all duration-300 ease-in-out"
         src={image}
         alt=""
       />

@@ -7,7 +7,7 @@ const MyItems = () => {
   const { user } = useContext(AuthContext);
   const [items, setItems] = useState([]);
 
-  const url = `http://localhost:5000?email=${user.email}`;
+  const url = `http://localhost:5000/myProducts?email=${user.email}`;
 
   useEffect(() => {
     fetch(url, {
@@ -27,7 +27,7 @@ const MyItems = () => {
   }, [url]);
 
   const handelDelete = (id) => {
-    const url = `http://localhost:5000/${id}`;
+    const url = `http://localhost:5000/myProducts/${id}`;
     Swal.fire({
       title: "Are you sure?",
       icon: "warning",

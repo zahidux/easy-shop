@@ -17,8 +17,8 @@ const BestProductsCart = ({ product }) => {
       <p>Available Quantity:</p>
       <div className="flex justify-between items-center">
         <p>$ {price}</p>
-        <Link to={`/productsDetails/${_id}`} className="btn-primary">
-          <button>View Details</button>
+        <Link to={`/productsDetails/${_id}`}>
+          <button className="btn-primary">View Details</button>
         </Link>
       </div>
     </div>
